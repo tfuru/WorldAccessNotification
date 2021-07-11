@@ -1,7 +1,7 @@
 # # WorldAccessNotification
 
 # BOT追加
-下のURLにアクセスすると Discord の チャンネルにBOT が追加できます。
+下のURLにアクセスすると Discord の チャンネルにBOT を招待する事ができます。
 
 [WorldAccessNotification BOT を 追加する](https://discord.com/api/oauth2/authorize?client_id=863341003880923156&permissions=67584&scope=bot)
 

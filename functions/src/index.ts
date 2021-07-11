@@ -1,5 +1,7 @@
 import * as functions from "firebase-functions";
 import * as FirebaseAdmin from "firebase-admin";
+import fetch from "node-fetch";
+import {JSDOM} from "jsdom";
 
 import * as express from "express";
 import * as cors from "cors";
@@ -14,6 +16,35 @@ const DISCORD_TOKEN: string = functions.config().discord.token;
 
 const CMD_PREFIX = "!";
 const NUM_SHARDS = 10;
+
+// URL にアクセスして ワールドID, タイトル を取得する
+// https://cluster.mu/w/e10c8416-6f4c-4f91-a606-2b07441a0583
+const getWorldInfoFromUrl = async (url: string) => {
+  if (url.startsWith("https://cluster.mu/w/") == false) {
+    // URLが違った
+    return ["", ""];
+  }
+
+  const identifier = url.replace("https://cluster.mu/w/", "");
+  let worldname = "";
+  const resp = await fetch(url);
+  if (resp.ok) {
+    const body = await resp.text();
+    console.log("resp", resp);
+    const jsdom = new JSDOM();
+    const parser = new jsdom.window.DOMParser();
+    const doc = parser.parseFromString(body, "text/html");
+    worldname = doc.title.replace("｜バーチャルSNS cluster（クラスター）", "");
+    console.log(worldname);
+  }
+
+  if (worldname === "") {
+    // タイトルが取得できなかった
+    return ["", ""];
+  }
+
+  return [identifier, worldname];
+};
 
 // discord
 client.on("ready", () => {
@@ -35,14 +66,29 @@ client.on("message", async (message: Message) => {
     console.log("message.channel.id", message.channel.id);
     const words = message.content.split(" ");
     console.log("words", words.length, words);
-    if (words.length != 3) {
+    if (words.length <= 1) {
       message
           .channel
           .send("!set コマンドのパラメータが足りません。 !set :identifier :worldname");
       return;
     }
-    const identifier = words[1];
-    const worldname = words[2];
+    let identifier = "";
+    let worldname = "";
+    if (words.length == 2) {
+      // URL 対応
+      // https://cluster.mu/w/e10c8416-6f4c-4f91-a606-2b07441a0583
+      [identifier, worldname] = await getWorldInfoFromUrl(words[1]);
+    } else if (words.length == 3) {
+      identifier = words[1];
+      worldname = words[2];
+    }
+
+    if (identifier == "" || worldname == "") {
+      message
+          .channel
+          .send(":identifier :worldname が取得できませんでした");
+      return;
+    }
 
     // DB に登録する
     const ref = db.collection(identifier).doc("access");
@@ -56,7 +102,7 @@ client.on("message", async (message: Message) => {
     // 分散カウンタも登録
     await createCounter(ref, NUM_SHARDS);
 
-    message.channel.send(`${worldname} を設定しました`);
+    message.channel.send(`${worldname} を設定しました \nワールドID ${identifier}`);
   } else if (message.content.startsWith(`${CMD_PREFIX}pv`)) {
     // !pv :identifier
     const words = message.content.split(" ");

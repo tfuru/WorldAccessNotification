@@ -1,6 +1,12 @@
-# # WorldAccessNotification
+# WorldAccessNotification
 
-# BOT追加
+cluster のワールドに配布アイテムを設置する事で、Discod に 入室通知が届くBOT を利用する事ができるようになります。
+
+# 配布物
+- [WorldAccessNotification Discod BOT](https://discord.com/api/oauth2/authorize?client_id=863341003880923156&permissions=67584&scope=bot)
+- [WAN.unitypackage](unity/WAN.unitypackage) Unityパッケージ
+
+# BOTの追加 方法
 下のURLにアクセスすると Discord の チャンネルにBOT を招待する事ができます。
 
 [WorldAccessNotification BOT を 追加する](https://discord.com/api/oauth2/authorize?client_id=863341003880923156&permissions=67584&scope=bot)
@@ -38,15 +44,20 @@ https://cluster.mu/w/[ワールドID]
 
 # Unity アイテムへの設定方法
 
-1. WAN Unityパッケージを [ココから](unity/wan.unitypackage) ダウンロードする
-2. 設置したいワールドのUnityプロジェクトをひらいて インポートする
+1. WAN Unityパッケージを [ココから WAN.unitypackage](unity/WAN.unitypackage) ダウンロードする
+2. 設置したいワールドのUnityプロジェクトをひらいた状態で WAN.unitypackage をダブルクリックしてインポートする
 3. Assets -> t_furu -> WorldAccessNotification を開くと WAN Prefab がある
-4. どこでもいいので ワールド に WAN Prefab を配置する
+4. シーンのルートに WAN Prefab を配置する
 5. 配置した WAN を `Unpack Prefab` する
 6. VideoPlayer の Source URL に したのURLを設定する  
    `https://us-central1-worldaccessnotification.cloudfunctions.net/api/access/[ワールドID]`
 7. ワールドに入室してみて Discord BOT に通知が来るか確認する
 
+# デモ設置先 Discord
+
+[WorldAccessNotification](https://discord.gg/RqPfKymS)  
+
+コマンドを自由に試す事ができます。
 
 # 質問 や 不明点があれば
 

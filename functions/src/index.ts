@@ -182,7 +182,8 @@ app.get("/access/:identifier", async (req, res) => {
     const channelId = data.channel;
     const channel = client.channels.cache.get(channelId) as any;
     if (typeof channel != "undefined" && "send" in channel) {
-      channel.send(`${worldname} に入室がありました`);
+      const ｗurl = `https://cluster.mu/w/${identifier}`;
+      channel.send(`${worldname} に入室がありました\n${ｗurl}`);
     }
   }
   // return res.status(200).json({status: "OK", result: result});

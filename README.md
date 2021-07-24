@@ -1,9 +1,9 @@
 # WorldAccessNotification
 
-cluster のワールドに配布アイテムを設置する事で、Discod に 入室通知が届くBOT を利用する事ができるようになります。
+cluster のワールドに配布アイテムを設置する事で、 Discord に 入室通知が届くBOT を利用する事ができるようになります。
 
 # 配布物
-- [WorldAccessNotification Discod BOT](https://discord.com/api/oauth2/authorize?client_id=863341003880923156&permissions=67584&scope=bot)
+- [WorldAccessNotification Discord BOT](https://discord.com/api/oauth2/authorize?client_id=863341003880923156&permissions=67584&scope=bot)
 - [WAN.unitypackage](unity/WAN.unitypackage) Unityパッケージ
 
 # BOTの追加 方法

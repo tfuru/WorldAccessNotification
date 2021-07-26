@@ -50,7 +50,7 @@ https://cluster.mu/w/[ワールドID]
 4. シーンのルートに WAN Prefab を配置する
 5. 配置した WAN を `Unpack Prefab` する
 6. VideoPlayer の Source URL に したのURLを設定する  
-   `https://us-central1-worldaccessnotification.cloudfunctions.net/api/access/[ワールドID]`
+   `https://asia-northeast1-worldaccessnotification.cloudfunctions.net/api/access/[ワールドID]`
 7. ワールドに入室してみて Discord BOT に通知が来るか確認する
 
 # デモ設置先 Discord

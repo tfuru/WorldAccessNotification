@@ -7,13 +7,13 @@ cluster のワールドに配布アイテムを設置する事で、 Discord に
 - [WAN.unitypackage](unity/WAN.unitypackage) Unityパッケージ
 
 # BOTの追加 方法
-下のURLにアクセスすると Discord の チャンネルにBOT を招待する事ができます。
+下のURLにアクセスすると Discord の サーバにBOT を招待する事ができます。
 
 [WorldAccessNotification BOT を 追加する](https://discord.com/api/oauth2/authorize?client_id=863341003880923156&permissions=67584&scope=bot)
 
 # 通知ツール使い方
 
-BOT追加した後に いつくかコマンドで設定する必用があります。 設定は BOTを招待した チャンネルで行います。
+BOT追加した後に コマンドで設定する必用があります。 設定は BOTを招待した チャンネルで行います。
 
 ## ワールドID の 見つけ方
 cluster に ワールドをアップロードすると URLが決定されます。 

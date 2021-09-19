@@ -55,7 +55,7 @@ https://cluster.mu/w/[ワールドID]
 
 # デモ設置先 Discord
 
-[WorldAccessNotification](https://discord.gg/RqPfKymS)  
+[WorldAccessNotification](https://discord.gg/F98bqz58)  
 
 コマンドを自由に試す事ができます。
 
